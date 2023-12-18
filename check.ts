@@ -12,6 +12,10 @@ fs.readFile('index.html', (err, html) => {
             res.setHeader('Content-type', 'text/css');
             res.write(fs.readFileSync('output.css'))
             res.end();
+        }else if(req.url == '/frnd.js'){
+            res.setHeader('Content-type', 'text/javascript');
+            res.write(fs.readFileSync('frnd.js'))
+            res.end();
         }else{
             res.write("invalid request");
             res.end();
