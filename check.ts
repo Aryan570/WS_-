@@ -18,9 +18,10 @@ fs.readFile('index.html', (err, html) => {
         }
         
     })
+    
+    server.listen(3000)
     // const ser = new WebSocket.Server({
     //     server
     // })
-    server.listen(3000)
 })
 
