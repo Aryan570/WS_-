@@ -20,12 +20,24 @@ fs.readFile('index.html', (err, html) => {
             res.write("invalid request");
             res.end();
         }
-        
     })
     
+    const ser = new WebSocket.Server({
+        server
+    })
+    ser.on('connection',(socket)=>{
+        // console.log('connected!!')
+        console.log("Im fucking here")
+        
+        socket.on('open',()=>{
+            console.log('Connected!!')
+        })
+        socket.on('close',()=>{
+            console.log('Disconnected!!')
+        })
+    });
     server.listen(3000)
-    // const ser = new WebSocket.Server({
-    //     server
-    // })
+    
+    
 })
 
