@@ -26,11 +26,8 @@ fs.readFile('index.html', (err, html) => {
     ser.on('connection',()=>{
         console.log("Connected!")
     })
-    // ser.on('listening',()=>{
-    //     console.log("Im fucking here")
-    // });
     ser.on('close',()=>{
-        console.log("In open")
+        console.log("Closed")
     })
     
 })

@@ -29,3 +29,6 @@ const socket = new WebSocket(`ws:${afterFirstColon}`);
 socket.addEventListener("open", (event) => {
   socket.send("Hello Server!");
 });
+socket.addEventListener("close",(e)=>{
+    socket.close()
+})
