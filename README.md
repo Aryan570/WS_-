@@ -1,1 +1,1 @@
-Trying to Implement WebSocket with ChatApp.
+Trying to Implement WebSocket & I'm struggling.
