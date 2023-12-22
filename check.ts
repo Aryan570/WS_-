@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 import { createServer } from 'http'
-import { WebSocket } from 'ws'
+import { WebSocket, WebSocketServer } from 'ws'
 fs.readFile('index.html', (err, html) => {
     let server = createServer((req,res)=>{
         // console.log(req.url);
@@ -20,24 +20,18 @@ fs.readFile('index.html', (err, html) => {
             res.write("invalid request");
             res.end();
         }
+    }).listen(3000)
+    // console.log(server)
+    const ser = new WebSocketServer({server});
+    ser.on('connection',()=>{
+        console.log("Connected!")
     })
-    
-    const ser = new WebSocket.Server({
-        server
+    // ser.on('listening',()=>{
+    //     console.log("Im fucking here")
+    // });
+    ser.on('close',()=>{
+        console.log("In open")
     })
-    ser.on('connection',(socket)=>{
-        // console.log('connected!!')
-        console.log("Im fucking here")
-        
-        socket.on('open',()=>{
-            console.log('Connected!!')
-        })
-        socket.on('close',()=>{
-            console.log('Disconnected!!')
-        })
-    });
-    server.listen(3000)
-    
     
 })
 

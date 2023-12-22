@@ -19,3 +19,13 @@ button?.addEventListener('click',()=>{
 // chat.style.listStyleType = 'none'
 // chats?.appendChild(chat)
 //make this a function
+// Create WebSocket connection.
+const urlString = window.location.href;
+const parts = urlString.split(':');
+const afterFirstColon = parts.slice(1).join(':');
+// console.log(afterFirstColon);
+const socket = new WebSocket(`ws:${afterFirstColon}`);
+// Connection opened
+socket.addEventListener("open", (event) => {
+  socket.send("Hello Server!");
+});
