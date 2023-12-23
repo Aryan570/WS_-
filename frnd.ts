@@ -25,7 +25,9 @@ const parts = urlString.split(':');
 const afterFirstColon = parts.slice(1).join(':');
 // console.log(afterFirstColon);
 const socket = new WebSocket(`ws:${afterFirstColon}`);
-// Connection opened
-// socket.addEventListener("open", (event) => {
-//     socket.send("Hello Server!");
-// });
+socket.onopen = () => {
+    console.log("Connected with client")
+}
+socket.onclose = () => {
+    console.log("closed")
+}
