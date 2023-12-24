@@ -23,7 +23,8 @@ fs.readFile('index.html', (err, html) => {
     }).listen(3000)
     // console.log(server)
     const ser = new WebSocketServer({server});
-    ser.on('connection',()=>{
+    ser.on('connection',(s)=>{
+        s.send('Hello Client')
         console.log("Connected!")
     })
     ser.on('close',()=>{
