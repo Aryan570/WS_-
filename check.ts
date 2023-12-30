@@ -3,7 +3,6 @@ import { createServer } from 'http'
 import { WebSocket, WebSocketServer } from 'ws'
 fs.readFile('index.html', (err, html) => {
     let server = createServer((req,res)=>{
-        // console.log(req.url);
         if(req.url=='/'){
             res.setHeader('Content-type', 'text/html');
             res.write(html)
@@ -21,12 +20,17 @@ fs.readFile('index.html', (err, html) => {
             res.end();
         }
     }).listen(3000)
-    // console.log(server)
     const ser = new WebSocketServer({server});
     ser.on('connection',(server)=>{
-        server.send('Hello Client')
+        // server.send('Hello Client')
         server.on('message',(data)=>{
-            console.log(`message from client : ${data}`)
+            // console.log(`message from client : ${data}`)
+            // server.send('This message is from server')
+            ser.clients.forEach((client)=>{
+                if(client.readyState === WebSocket.OPEN){
+                    client.send(data.toString());
+                }
+            })
         })
         server.on('close',()=>{
             console.log("Closed")
