@@ -21,11 +21,15 @@ fs.readFile('index.html', (err, html) => {
         }
     }).listen(3000)
     const ser = new WebSocketServer({server});
+    let msgArray : string[] = [];
     ser.on('connection',(server)=>{
         // server.send('Hello Client')
+        console.log(ser.clients.size) // How to write in Dom , no. of connected people
+        for(let i=0;i<msgArray.length;i++) server.send(msgArray[i])
         server.on('message',(data)=>{
             // console.log(`message from client : ${data}`)
             // server.send('This message is from server')
+            msgArray.push(data.toString());
             ser.clients.forEach((client)=>{
                 if(client.readyState === WebSocket.OPEN){
                     client.send(data.toString());
