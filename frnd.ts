@@ -4,14 +4,17 @@ const afterFirstColon = parts.slice(1).join(':');
 const socket = new WebSocket(`ws:${afterFirstColon}`);
 socket.onopen = () => {
     console.log("Connected with Server")
-    no_of_connections()
+    // no_of_connections()
 }
 socket.onclose = () => {
     console.log("Bye Bye")
 }
 socket.onmessage = (e) =>{
-     console.log(`Message Received : ${e.data} `)
-     broadcast_from_server(e.data)
+    //  console.log(`Message Received : ${e.data} `)
+    const check = JSON.parse(e.data)
+    // console.log(typeof e.data,check)
+    if(check[0] === 'message') broadcast_from_server(check[1])
+    else no_of_connections(check[1]);
 }
 const chats = document.querySelector('.ul');
 // const chat = document.createElement('li')
@@ -40,11 +43,10 @@ function broadcast_from_server(message :string){
     chats?.appendChild(chat);
 
 }
-let conne = 1;
-function no_of_connections(){
+function no_of_connections(num : string){
     let node = document.getElementById('connec');
     let innerTxt = node?.innerHTML;
-    innerTxt = innerTxt + `${conne}`
+    innerTxt = `Connected : ${num}`
     node!.innerHTML = innerTxt
 }
 /*Next task -- 
