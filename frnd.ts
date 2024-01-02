@@ -3,15 +3,15 @@ const parts = urlString.split(':');
 const afterFirstColon = parts.slice(1).join(':');
 const socket = new WebSocket(`ws:${afterFirstColon}`);
 socket.onopen = () => {
-    console.log("Connected with client")
+    console.log("Connected with Server")
+    no_of_connections()
 }
 socket.onclose = () => {
-    console.log("closed")
+    console.log("Bye Bye")
 }
 socket.onmessage = (e) =>{
      console.log(`Message Received : ${e.data} `)
      broadcast_from_server(e.data)
-
 }
 const chats = document.querySelector('.ul');
 // const chat = document.createElement('li')
@@ -40,9 +40,15 @@ function broadcast_from_server(message :string){
     chats?.appendChild(chat);
 
 }
+let conne = 1;
+function no_of_connections(){
+    let node = document.getElementById('connec');
+    let innerTxt = node?.innerHTML;
+    innerTxt = innerTxt + `${conne}`
+    node!.innerHTML = innerTxt
+}
 /*Next task -- 
  1.Make the function of the above addition of node li, so that socket.message can be called with that too. ✔
  2. Broadcast the chat message to all the client except the client that sent the message ✔
-
 
 */

@@ -24,7 +24,7 @@ fs.readFile('index.html', (err, html) => {
     let msgArray : string[] = [];
     ser.on('connection',(server)=>{
         // server.send('Hello Client')
-        console.log(ser.clients.size) // How to write in Dom , no. of connected people
+        // console.log(ser.clients.size) // How to write in Dom , no. of connected people
         for(let i=0;i<msgArray.length;i++) server.send(msgArray[i])
         server.on('message',(data)=>{
             // console.log(`message from client : ${data}`)
@@ -41,7 +41,5 @@ fs.readFile('index.html', (err, html) => {
         })
         console.log("Connected!")
     })
-    
-    
 })
 
