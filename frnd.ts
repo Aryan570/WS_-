@@ -28,7 +28,6 @@ function append_to_list(){
     }
 }
 function broadcast_from_server(message :string){
-    // let val = (<HTMLInputElement>document.getElementById('ips'));
     const chat = document.createElement('li');
     chat.innerHTML = message;
     chat.style.color = clrs[Math.floor((Math.random() * 10)) % 7]
@@ -44,5 +43,4 @@ function no_of_connections(num : string){
 /*Next task -- 
  1.Make the function of the above addition of node li, so that socket.message can be called with that too. ✔
  2. Broadcast the chat message to all the client except the client that sent the message ✔
-
 */

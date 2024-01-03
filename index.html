@@ -8,19 +8,18 @@
     <link href="output.css" rel="stylesheet">
 </head>
 
-<body>
-    <h3 id="connec" class="font-bold m-3 absolute">Connected : </h3>
-    <div class="flex flex-col justify-center items-center min-h-screen">
-        <div class="flex flex-col left-0">
+<body class="container flex justify-center min-h-screen">
+    <h3 id="connec" class="font-bold m-3 fixed left-0 ">Connected : </h3>
+    <div class=" flex flex-col justify-center items-center w-full max-w-md m-3">
+        <div class="flex flex-col left-0 w-full max-w-md">
             <label for="username">Enter your name</label>
             <input value="" type="text" id="username" name="username" class="border rounded-md border-zinc-500 input px-1">
         </div>
-        <h3 class="text-red-500 text-3xl">Chat-Soup</h3>
-        <div class="flex flex-col left-0">
-            <ul class="ul"></ul>
-            <label for="ips">Send a message</label>
+        <ul class="ul list-disc"></ul>
+        <div class="flex flex-col left-0 w-full max-w-md">
+            <label for="ips">Message</label>
             <input value="" type="text" id="ips" name="ips" class="border rounded-md border-zinc-500 input px-1">
-            <button class="button bg-red-400 mt-2 px-2 py-1 rounded-md">Send</button>
+            <button class="button bg-red-400 mt-2 px-2 py-1 rounded-md mb-3">Send</button>
         </div>
     </div>
     <script src="frnd.js"></script>
