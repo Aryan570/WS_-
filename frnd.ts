@@ -4,20 +4,16 @@ const afterFirstColon = parts.slice(1).join(':');
 const socket = new WebSocket(`ws:${afterFirstColon}`);
 socket.onopen = () => {
     console.log("Connected with Server")
-    // no_of_connections()
 }
 socket.onclose = () => {
     console.log("Bye Bye")
 }
 socket.onmessage = (e) =>{
-    //  console.log(`Message Received : ${e.data} `)
     const check = JSON.parse(e.data)
-    // console.log(typeof e.data,check)
     if(check[0] === 'message') broadcast_from_server(check[1])
     else no_of_connections(check[1]);
 }
 const chats = document.querySelector('.ul');
-// const chat = document.createElement('li')
 const button: HTMLElement | null = document.querySelector('.button')
 const clrs = ['red', 'cyan', 'tomato', 'lime', 'blue', 'violet', 'hotpink']
 button?.addEventListener('click', () => {
@@ -26,11 +22,7 @@ button?.addEventListener('click', () => {
 function append_to_list(){
     let val = (<HTMLInputElement>document.getElementById('ips'));
     let username = (<HTMLInputElement>document.getElementById('username'))
-    // const chat = document.createElement('li');
     if (val.value && username.value) {
-        // chat.innerHTML = `${username.value} - ${val.value}`;
-        // chat.style.color = clrs[Math.floor((Math.random() * 10)) % 8]
-        // chats?.appendChild(chat);
         socket.send(`${username.value} - ${val.value}`)
         val.value = "";
     }
