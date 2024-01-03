@@ -29,7 +29,10 @@ fs.readFile('index.html', (err, html) => {
                 client.send(to_connec)
             }
         })
-        for (let i = 0; i < msgArray.length; i++) server.send(msgArray[i])
+        for (let i = 0; i < msgArray.length; i++){
+            const msg = JSON.stringify(['message',msgArray[i]])
+            server.send(msg)
+        } 
         server.on('message', (data) => {
             msgArray.push(data.toString());
             ser.clients.forEach((client) => {
@@ -51,4 +54,3 @@ fs.readFile('index.html', (err, html) => {
         console.log("Connected!")
     })
 })
-
