@@ -49,6 +49,7 @@ fs.readFile('index.html', (err, html) => {
                     client.send(siu)
                 }
             })
+            if(ser.clients.size < 1) msgArray = [];
             console.log("Closed")
         })
         console.log("Connected!")
