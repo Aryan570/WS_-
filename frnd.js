@@ -1,7 +1,7 @@
-var urlString = window.location.href;
-var parts = urlString.split(':');
-var afterFirstColon = parts.slice(1).join(':');
-var socket = new WebSocket("ws:".concat(afterFirstColon));
+// const urlString = window.location.href;
+// const parts = urlString.split(':');
+// const afterFirstColon = parts.slice(1).join(':');
+var socket = new WebSocket("wss://silly-luisa-aryan570.koyeb.app");
 socket.onopen = function () {
     console.log("Connected with Server");
 };
